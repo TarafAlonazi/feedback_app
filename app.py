@@ -17,6 +17,7 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db = SQLAlchemy(app)
 
+#feedback table
 class Feedback(db.Model):
     __tablename__ = 'feedback'
     id = db.Column(db.Integer, primary_key=True)
@@ -31,10 +32,12 @@ class Feedback(db.Model):
         self.rating = rating
         self.comments = comments
 
+#feedback page
 @app.route('/')
 def index():
     return render_template('index.html')
 
+#success massage
 @app.route('/submit', methods=['POST'])
 def submit():
     if request.method == 'POST':
